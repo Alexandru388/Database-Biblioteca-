@@ -1,0 +1,159 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit1.h"
+#include "Unit2.h"
+#include "Project1PCH1.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm1 *Form1;
+TDateTime DT;
+int PR,CL;
+//---------------------------------------------------------------------------
+__fastcall TForm1::TForm1(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::SpeedButton1Click(TObject *Sender)
+{
+
+	if( (Edit1->Text != NULL) && (Edit2->Text != NULL) ) {
+		if( (Edit1->Text == "CAMPUS") && (Edit2->Text == "CAMPUS") ) {
+
+			DM2->QCARTE->Close();
+			DM2->QCARTE->Open();
+			AUTENTIFICARE->TabVisible = false;
+			IMPRUMUT->TabVisible = true;
+			CITITOR->TabVisible = true;
+
+			Label1->Caption = "ADMIN ADMIN";
+
+		}
+		else {
+			ShowMessage("Autentificare esuata");
+			Edit2->Clear();
+		}
+	}
+	else {
+		ShowMessage("Dvs nu ati completat campurile pentru autentificare");
+	}
+}
+//---------------------------------------------------------------------------
+
+
+
+
+void __fastcall TForm1::Timer1Timer(TObject *Sender)
+{
+  Label7->Caption = DT.CurrentTime();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::FormShow(TObject *Sender)
+{
+      	Label3->Caption = DT.CurrentDate();
+
+	CAUTARE->TabVisible = false;
+	CITITOR->TabVisible = false;
+	IMPRUMUT->TabVisible = false;
+}
+//---------------------------------------------------------------------------
+
+
+
+
+void __fastcall TForm1::SpeedButton14Click(TObject *Sender)
+{
+	Edit5->Text = DM2->QCARTE->FieldByName("NUME CARTE")->AsString;
+	PR = DM2->QCARTE->FieldByName("CARTE_ID")->AsInteger;
+	PRODUS->TabVisible = false;
+	IMPRUMUT->TabVisible = true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::SpeedButton9Click(TObject *Sender)
+{
+	DM2->QCARTE->Close();
+	DM2->QCARTE->Open();
+	IMPRUMUT->TabVisible = false;
+	PRODUS->TabVisible = true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::SpeedButton10Click(TObject *Sender)
+{
+			DM2->QCITITOR->Close();
+			DM2->QCITITOR->Open();
+	IMPRUMUT->TabVisible = false;
+	CITITOR->TabVisible = true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::CheckBox2Click(TObject *Sender)
+{
+if(CheckBox2->Checked) {
+		Edit7->Visible = true;
+		Edit8->Visible = true;
+		Edit16->Visible = true;
+		Edit17->Visible = true;
+		Edit18->Visible = true;
+		SpeedButton13->Visible = true;
+
+	}
+	else {
+		Edit7->Visible = false;
+		Edit8->Visible = false;
+		Edit16->Visible = false;
+		Edit17->Visible = false;
+		Edit18->Visible = false;
+		SpeedButton13->Visible = false;
+
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::SpeedButton13Click(TObject *Sender)
+{
+
+	  if( (Edit7->Text != NULL) && (Edit8->Text != NULL) && (Edit16->Text != NULL) && (Edit17->Text != NULL) && (Edit18->Text != NULL) ) {
+		DM2->QLIBER->Close();
+		DM2->QLIBER->SQL->Clear();
+		DM2->QLIBER->SQL->Add("INSERT INTO CITITOR(NUME, PRENUME, ADRESA, TELEFON, IDNP) VALUES(:NUME, :PRENUME, :ADRESA, :TELEFON, :IDNP)");
+		DM2->QLIBER->ParamByName("NUME")->AsString = Edit7->Text;
+		DM2->QLIBER->ParamByName("PRENUME")->AsString = Edit8->Text;
+		DM2->QLIBER->ParamByName("ADRESA")->AsString = Edit18->Text;
+		DM2->QLIBER->ParamByName("TELEFON")->AsString = Edit16->Text;
+		DM2->QLIBER->ParamByName("IDNP")->AsString = Edit17->Text;
+		DM2->QLIBER->ExecSQL();
+		DM2->QCITITOR->Close();
+		DM2->QCITITOR->Open();
+		ShowMessage("Inregistrare cu succes");
+		CheckBox2->Checked = false;
+		Edit7->Clear();
+		Edit8->Clear();
+		Edit16->Clear();
+		Edit17->Clear();
+		Edit18->Clear();
+		SpeedButton12->Click();
+	}
+	else {
+
+	}
+
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::SpeedButton11Click(TObject *Sender)
+{
+	Edit6->Text = DM2->QCITITOR->FieldByName("NPP")->AsString;
+	CL = DM2->QCITITOR->FieldByName("CITITOR_ID")->AsInteger;
+	CITITOR->TabVisible = false;
+	IMPRUMUT->TabVisible = true;
+}
+//---------------------------------------------------------------------------
+

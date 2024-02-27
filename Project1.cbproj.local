@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2021/08/01 11:41:50.000.117,=C:\Users\bivol\OneDrive\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2021/08/01 11:41:50.000.130,=C:\Users\bivol\OneDrive\Documents\Embarcadero\Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>2021/08/01 11:42:11.000.538,C:\Users\bivol\OneDrive\Documents\Embarcadero\Studio\Projects\Project1.cbproj=C:\Users\bivol\OneDrive\Documents\Embarcadero\Studio\Projects\Project1.cbproj</Transaction>
+    <Transaction>2021/08/01 12:33:55.000.839,=C:\Users\bivol\OneDrive\Documents\Embarcadero\Studio\Projects\Unit2.cpp</Transaction>
+    <Transaction>2021/08/01 12:42:21.000.126,=C:\Users\bivol\OneDrive\Documents\Embarcadero\Studio\Projects\Unit2.cpp</Transaction>
+    <Transaction>2021/08/01 12:42:32.000.973,=C:\Users\bivol\OneDrive\Documents\Embarcadero\Studio\Projects\Unit2.cpp</Transaction>
+    <Transaction>2021/08/01 12:45:00.000.557,=C:\Users\bivol\OneDrive\Documents\Embarcadero\Studio\Projects\OKCANCL2.cpp</Transaction>
+    <Transaction>2021/08/01 12:47:38.000.531,=C:\Users\bivol\OneDrive\Documents\Embarcadero\Studio\Projects\Unit2.cpp</Transaction>
+    <Transaction>2021/08/01 13:02:41.000.692,C:\Users\bivol\OneDrive\Documents\Embarcadero\Studio\Projects\Unit2.dfm=F:\IT\EXAMEN\Unit2.dfm</Transaction>
+    <Transaction>2021/08/01 13:02:41.000.692,C:\Users\bivol\OneDrive\Documents\Embarcadero\Studio\Projects\Unit2.h=F:\IT\EXAMEN\Unit2.h</Transaction>
+    <Transaction>2021/08/01 13:02:41.000.692,C:\Users\bivol\OneDrive\Documents\Embarcadero\Studio\Projects\Unit2.cpp=F:\IT\EXAMEN\Unit2.cpp</Transaction>
+  </Transactions>
+</BorlandProject>

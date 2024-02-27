@@ -1,0 +1,83 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit1.h"
+#include "Unit2.h"
+#include "Project1PCH1.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm1 *Form1;
+TDateTime DT;
+int PR;
+//---------------------------------------------------------------------------
+__fastcall TForm1::TForm1(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::SpeedButton1Click(TObject *Sender)
+{
+
+	if( (Edit1->Text != NULL) && (Edit2->Text != NULL) ) {
+		if( (Edit1->Text == "CAMPUS") && (Edit2->Text == "CAMPUS") ) {
+
+			AUTENTIFICARE->TabVisible = false;
+			CITITOR->TabVisible = true;
+			IMPRUMUT->TabVisible = true;
+			Label1->Caption = "ADMIN ADMIN";
+
+		}
+		else {
+			ShowMessage("Autentificare esuata");
+			Edit2->Clear();
+		}
+	}
+	else {
+		ShowMessage("Dvs nu ati completat campurile pentru autentificare");
+	}
+}
+//---------------------------------------------------------------------------
+
+
+
+
+void __fastcall TForm1::Timer1Timer(TObject *Sender)
+{
+  Label7->Caption = DT.CurrentTime();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::FormShow(TObject *Sender)
+{
+      	Label3->Caption = DT.CurrentDate();
+
+	CAUTARE->TabVisible = false;
+	CITITOR->TabVisible = false;
+	IMPRUMUT->TabVisible = false;
+}
+//---------------------------------------------------------------------------
+
+
+
+
+void __fastcall TForm1::SpeedButton14Click(TObject *Sender)
+{
+	Edit5->Text = QCARTE->FieldByName("NUME CARTE")->AsString;
+	PR = QCARTE->FieldByName("CARTE_ID")->AsInteger;
+	PRODUS->TabVisible = false;
+	IMPRUMUT->TabVisible = true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::SpeedButton9Click(TObject *Sender)
+{
+	QCARTE->Close();
+	QCARTE->Open();
+	IMPRUMUT->TabVisible = false;
+	PRODUS->TabVisible = true;
+}
+//---------------------------------------------------------------------------
+
